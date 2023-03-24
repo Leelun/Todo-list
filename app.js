@@ -3,6 +3,8 @@ const port = 3000
 const mongoose = require('mongoose')  //載入Mongoose
 
 
+const exphbs = require('express-handlebars')
+
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 
@@ -23,8 +25,12 @@ db.once('open', () => {
 })
 
 
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.set('view engine', 'hbs')
+
+
 app.get('/', (req, res) => {
-  res.send('hello')
+  res.render('index')
 })
 
 
