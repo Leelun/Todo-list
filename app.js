@@ -3,7 +3,8 @@ const port = 3000
 const mongoose = require('mongoose')  //載入Mongoose
 
 
-const exphbs = require('express-handlebars')
+const exphbs = require('express-handlebars') //載入樣板引擎
+const Todo  = require('./models/todo') //載入Todo model
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
@@ -30,7 +31,10 @@ app.set('view engine', 'hbs')
 
 
 app.get('/', (req, res) => {
-  res.render('index')
+  Todo.find() //取出Todo model的所有資料
+  .lean() //將mongoose的資料轉換成js資料
+  .then(todos => res.render('index', { todos:todos })) //將收集到的資料放進todos變數裡由index樣板去渲染
+  .catch(error => console.log(error))
 })
 
 
