@@ -46,18 +46,38 @@ app.get('/todos/new', (req, res) => {
   return res.render('new')
 })
 
-app.post('/todos', (req, res) => {  //當我收到method為post  路由為/todos的請求 就執行函式
+app.post('/todos', (req, res) => {  //CREATE功能,當我收到method為post  路由為/todos的請求 就執行函式
   const name = req.body.name
   return Todo.create({ name })
   .then(() => res.redirect('/'))
   .catch(error => console.log(error))
 })
 
-app.get('/todos/:id', (req, res) => {
+app.get('/todos/:id', (req, res) => { //READ功能
   const id = req.params.id
    Todo.findById(id)
     .lean()
     .then((todo) => res.render('detail', { todo }))
+    .catch(error => console.log(error))
+})
+
+
+app.get('/todos/:id/edit', (req, res) => { //UPDATE功能1
+  const id = req.params.id
+  Todo.findById(id)
+    .lean()
+    .then((todo) => res.render('edit', { todo }))
+    .catch(error => console.log(error))
+})
+app.post('/todos/:id/edit', (req, res) => {//UPDATE功能2
+  const id = req.params.id
+  const name = req.body.name
+  return Todo.findById(id)
+    .then(todo => {
+      todo.name = name
+      return todo.save()
+    })
+    .then(() => res.redirect(`/todos/${id}`))
     .catch(error => console.log(error))
 })
 
