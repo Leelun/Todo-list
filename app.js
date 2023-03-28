@@ -53,6 +53,14 @@ app.post('/todos', (req, res) => {  //當我收到method為post  路由為/todos
   .catch(error => console.log(error))
 })
 
+app.get('/todos/:id', (req, res) => {
+  const id = req.params.id
+   Todo.findById(id)
+    .lean()
+    .then((todo) => res.render('detail', { todo }))
+    .catch(error => console.log(error))
+})
+
 
 app.listen(port, () => {
   console.log(`express is running on localhost:${port}`)
