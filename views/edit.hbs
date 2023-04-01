@@ -1,4 +1,4 @@
-<form action="/todos/{{ todo._id }}/edit" method="POST"> {{!用post的方法把資料送給/todos位置}}
+<form action="/todos/{{ todo._id }}?_method=PUT" method="POST"> {{!用put的方法把資料送給/todos位置}}
 <input type="checkbox" name="isDone" {{#if todo.isDone}} checked {{/if}}>
 
   <input type="text" placeholder="name" name="name" value="{{ todo.name }}">
