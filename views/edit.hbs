@@ -1,4 +1,6 @@
 <form action="/todos/{{ todo._id }}/edit" method="POST"> {{!用post的方法把資料送給/todos位置}}
+<input type="checkbox" name="isDone" {{#if todo.isDone}} checked {{/if}}>
+
   <input type="text" placeholder="name" name="name" value="{{ todo.name }}">
   <button type="submit">save</button>
   <a href="/">back</a>
