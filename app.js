@@ -38,6 +38,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.get('/', (req, res) => {
   Todo.find() //取出Todo model的所有資料
   .lean() //將mongoose的資料轉換成js資料
+  .sort({ _id: 'asc' }) //利用mongoose的sort方法將資料作升冪 (ascending) 排序」，反之，如果要降冪 (descending) 排序，可以寫 'desc'。
   .then(todos => res.render('index', { todos:todos })) //將收集到的資料放進todos變數裡由index樣板去渲染
   .catch(error => console.log(error))
 })
