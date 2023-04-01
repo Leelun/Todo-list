@@ -1,5 +1,5 @@
 const express = require('express')
-const port = 3000
+const PORT = process.env.PORT || 3000
 
 const exphbs = require('express-handlebars') //載入樣板引擎
 
@@ -21,6 +21,6 @@ app.use(methodOverride('_method'))  // 設定每一筆請求都會透過 methodO
 
 app.use(routes)  // 將 request 導入路由器
 
-app.listen(port, () => {
-  console.log(`express is running on localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`express is running on localhost:${PORT}`)
 })
