@@ -1,8 +1,8 @@
 # 我的待辦清單 My Todo-list
 
 使用Node.js + Express打造的待辦清單，使用者可以瀏覽清單上的待辦事項，點擊detail時可以瀏覽該筆待辦事項的詳細資訊，同時也可以進行待辦事項的新增與刪除
-![image](https://github.com/Leelun/AC-restaurant_list/blob/main/public/img/HomePage.png)
-![image](https://github.com/Leelun/AC-restaurant_list/blob/main/public/img/Restaurant%20Info.png)
+![image](https://github.com/Leelun/Todo-list/blob/main/home.png)
+
 
 
 
